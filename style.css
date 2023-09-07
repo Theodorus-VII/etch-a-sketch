@@ -1,19 +1,26 @@
 .main-container{
+    display: grid;
+    grid-template: 'settings grid grid grid'
+}
+
+.grid-container{
     display: flex;
     flex-direction: column;
-    width: 100vw;
+    width: 720px;
     aspect-ratio: 1;
     padding: 0;
+    grid-area: grid;
+    border: solid black 1px
 }
 
 .grid-row{
     display: flex;
     flex-wrap: nowrap;
-    height: 6.26%
+    /* height: 6.26% */
 }
 
 .grid-tile{
-    width: 6.25%;
+    /* width: 6.25%; */
     margin: 0;
     padding: 0;
 }

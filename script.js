@@ -1,47 +1,57 @@
 let mousedown = false;
 
-document.body.onmousedown = ()=>{
+let grid = document.querySelector('.grid-container');
+grid.onmousedown = ()=>{
+    console.log('mousedown')
     mousedown = true;
 }
-document.body.onmouseup = ()=>{
+grid.onmouseup = ()=>{
+    console.log('mouseup')
     mousedown = false;
 }
 
 
-function buildGrid(){
-    let main_container = document.querySelector('.main-container');
+function buildGrid(grid_size=16){
+    let grid = document.querySelector('.grid-container');
+    grid.setAttribute('draggable', 'false'); 
 
-    for (let i = 0; i < 16; i++){
+    for (let i = 0; i < grid_size; i++){
         const container = document.createElement('div');
+        container.setAttribute('draggable', 'false');
         container.classList.add('grid-row');
-        for (let j = 0; j<16; j++){
+        container.style.height = `${(1/grid_size)*100}%`;
+        for (let j = 0; j<grid_size; j++){
             const grid_tile = document.createElement('div');
 
             grid_tile.classList.add('grid-tile');
             grid_tile.classList.add(`tile-${i}-${j}`);
 
+            grid_tile.style.width = `${(1/grid_size)*100}%`
+            grid_tile.setAttribute('draggable', 'false'); 
+            grid_tile.setAttribute('ondragstart', 'return false;')
+            
+
             grid_tile.addEventListener('mouseenter', ()=>{
-                console.log(grid_tile.style.backgroundColor);
-                grid_tile.classList.toggle('tile-hover');
                 if (mousedown){
                     grid_tile.style.backgroundColor = 'black';
                 }
+                else{
+                    grid_tile.classList.toggle('tile-hover');
+                }
             })
-
             grid_tile.addEventListener('mouseleave', ()=>{
-                console.log(grid_tile.style.backgroundColor);
+                if (mousedown) return;
                 grid_tile.classList.toggle('tile-hover');
             })
 
             grid_tile.addEventListener('mousedown', ()=>{
+                if (grid_tile.style.backgroundColor) return;
                 grid_tile.style.backgroundColor = 'black';
             })
-            
-
             container.appendChild(grid_tile);
         }
-        main_container.appendChild(container);
+        grid.appendChild(container);
     }
 }
 
-buildGrid();
+buildGrid(50);
