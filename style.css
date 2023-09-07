@@ -1,0 +1,23 @@
+.main-container{
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    aspect-ratio: 1;
+    padding: 0;
+}
+
+.grid-row{
+    display: flex;
+    flex-wrap: nowrap;
+    height: 6.26%
+}
+
+.grid-tile{
+    width: 6.25%;
+    margin: 0;
+    padding: 0;
+}
+
+.tile-hover{
+    background-color: aqua;
+}
