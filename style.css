@@ -1,14 +1,29 @@
-.main-container{
-    display: grid;
-    grid-template: 'settings grid grid grid'
+body{
+    background-color: teal;
 }
 
+.main-container{
+    display: grid;
+    grid-template: 'settings grid grid grid';
+    padding: 5% 10%;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#heading{
+    justify-self: center;
+    text-align: center;
+    background-color: azure;
+    margin: 0 10%;
+}
 .grid-container{
+    background-color: white;
     display: flex;
     flex-direction: column;
     width: 720px;
     aspect-ratio: 1;
     padding: 0;
+    justify-self:right;
     grid-area: grid;
     border: solid black 1px
 }
@@ -23,8 +38,47 @@
     /* width: 6.25%; */
     margin: 0;
     padding: 0;
+    border: 1px inset rgba(0, 0, 0, 0.041);
 }
 
 .tile-hover{
     background-color: aqua;
+}
+
+.settings{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(154, 216, 216, 0.863);
+    padding: 40px;
+    margin: 3%;
+}
+
+.color-preview{
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    background-color: black;
+}
+
+.grid-size{
+    border: 1px solid teal;
+    padding: 5%;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.color-picker-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 10px 0px;
+}
+
+.color-preview, .color-picker{
+    margin: 5px;
 }

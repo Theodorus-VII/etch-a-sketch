@@ -10,6 +10,15 @@ grid.onmouseup = ()=>{
     mousedown = false;
 }
 
+let COLOR = 'black'
+
+let slider = document.querySelector('#input-grid-slider');
+
+
+function updateSlider(value){
+    let slider_preview = document.querySelector('.grid-size-preview');
+    slider_preview.textContent = `${value}x${value}`;
+}
 
 function buildGrid(grid_size=16){
     let grid = document.querySelector('.grid-container');
@@ -33,7 +42,7 @@ function buildGrid(grid_size=16){
 
             grid_tile.addEventListener('mouseenter', ()=>{
                 if (mousedown){
-                    grid_tile.style.backgroundColor = 'black';
+                    grid_tile.style.backgroundColor = COLOR;
                 }
                 else{
                     grid_tile.classList.toggle('tile-hover');
@@ -46,12 +55,18 @@ function buildGrid(grid_size=16){
 
             grid_tile.addEventListener('mousedown', ()=>{
                 if (grid_tile.style.backgroundColor) return;
-                grid_tile.style.backgroundColor = 'black';
+                grid_tile.style.backgroundColor = COLOR;
             })
             container.appendChild(grid_tile);
         }
         grid.appendChild(container);
     }
+}
+
+function rebuildGrid(){
+    let grid_size = document.getElementById('input-grid-slider').value;
+    document.querySelector('.grid-container').innerHTML = "";
+    buildGrid(grid_size);
 }
 
 buildGrid(50);
