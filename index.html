@@ -1,30 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script src="script.js" defer></script>
-    <link href="style.css" rel="stylesheet">
-</head>
-<body>
+    <link href="style.css" rel="stylesheet" />
+  </head>
+  <body>
     <h1 id="heading">Etch-A-Sketch</h1>
     <div class="main-container">
-        <div class="settings">
-            <h2>Settings</h2>
-            <div class="color-picker-container">
-                <button class="color-picker">Color Picker</button>
-                <div class="color-preview"></div>
-            </div>
-            <div class="grid-size">
-                <span>Grid-size</span>
-                <input type="range" min="2", max="100", value="16" id="input-grid-slider" aria-label="grid-size input slider" oninput="updateSlider(this.value)">
-                <div class="grid-size-preview">16x16</div>
-                <button class="reset-btn" onclick="rebuildGrid()">Reset</button>
-            </div>
+      <div class="settings">
+        <h2>Settings</h2>
+        <div class="color-picker-container">
+          <button class="color-picker" onclick="showColorPicker()">
+            Color Picker
+          </button>
+          <div class="color-picker-slider hidden" style="color: red">
+            R<input
+              type="range"
+              ,
+              min="0"
+              ,
+              max="255"
+              ,
+              value="0"
+              ,
+              id="red-slider"
+              ,
+              class="color-slider"
+              ,
+              aria-label="red_color slider"
+              ,
+              oninput="updateColor()"
+            />
+            
+          </div>
+          <div class="color-picker-slider hidden" style="color: green">
+            G<input
+              type="range"
+              ,
+              min="0"
+              ,
+              max="255"
+              ,
+              value="0"
+              ,
+              id="green-slider"
+              ,
+              class="color-slider"
+              ,
+              aria-label="green_color slider"
+              ,
+              oninput="updateColor()"
+            />
+            
+          </div>
+          <div class="color-picker-slider hidden" style="color: blue">
+            B<input
+              type="range"
+              ,
+              min="0"
+              ,
+              max="255"
+              ,
+              value="0"
+              ,
+              id="blue-slider"
+              ,
+              class="color-slider"
+              ,
+              aria-label="blue_color slider"
+              ,
+              oninput="updateColor()"
+            />
+            
+          </div>
+          <button class="color-picker-slider hidden" onclick="changeColor()">
+            Change Color
+          </button>
+          <div class="color-preview"></div>
         </div>
-        <div class="grid-container">
+        <div class="grid-size">
+          <span>Grid-size</span>
+          <input
+            type="range"
+            min="2"
+            ,
+            max="100"
+            ,
+            value="16"
+            id="input-grid-slider"
+            aria-label="grid-size input slider"
+            oninput="updateSlider(this.value)"
+          />
+          <div class="grid-size-preview">16x16</div>
+          <button class="reset-btn" onclick="rebuildGrid()">Reset</button>
         </div>
+      </div>
+      <div class="grid-container"></div>
     </div>
-</body>
+  </body>
 </html>

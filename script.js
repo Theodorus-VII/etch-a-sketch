@@ -10,7 +10,7 @@ grid.onmouseup = ()=>{
     mousedown = false;
 }
 
-let COLOR = 'black'
+let COLOR = "rgb(0,0,0)"
 
 let slider = document.querySelector('#input-grid-slider');
 
@@ -63,10 +63,32 @@ function buildGrid(grid_size=16){
     }
 }
 
+function showColorPicker(){
+    const sliders = document.querySelectorAll('.color-picker-slider');
+    sliders.forEach((slider)=>{
+        slider.classList.remove('hidden');
+    });
+    document.querySelector('.color-picker').classList.add('hidden')
+}
+function updateColor(){
+    const red = document.querySelector('#red-slider').value;
+    const green = document.querySelector('#green-slider').value;
+    const blue = document.querySelector('#blue-slider').value;
+
+    let preview = document.querySelector('.color-preview')
+    preview.style.backgroundColor =  `rgb(${red}, ${green}, ${blue}`; 
+}
+function changeColor(){
+    const red = document.querySelector('#red-slider').value;
+    const green = document.querySelector('#green-slider').value;
+    const blue = document.querySelector('#blue-slider').value;
+    
+    COLOR=`rgb(${red}, ${green}, ${blue}`;
+}
 function rebuildGrid(){
     let grid_size = document.getElementById('input-grid-slider').value;
     document.querySelector('.grid-container').innerHTML = "";
     buildGrid(grid_size);
 }
 
-buildGrid(50);
+buildGrid(50)
